@@ -1,0 +1,1208 @@
+﻿focus_tree = {
+
+	id = hungary_focus
+	
+	country = {
+	factor = 0
+		
+		modifier = {
+			add = 10
+			tag = HUN
+		}
+	}
+	
+	default = no
+	reset_on_civilwar = no
+
+	initial_show_position = {
+		focus = industrial_effort
+	}
+
+	focus = {
+		id = rebuild_the_great_army
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 2
+		y = 0
+		cost = 10
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 15
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = doctrine_tactics
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = rebuild_the_great_army }
+		x = 0
+		y = 1
+		relative_position_id = rebuild_the_great_army
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = disguised_production_lines
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = doctrine_tactics }
+		x = 0
+		y = 1
+		relative_position_id = doctrine_tactics
+		cost = 5
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = more_doctrine_tactics
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { focus = disguised_production_lines }
+		x = 0
+		y = 1
+		relative_position_id = disguised_production_lines
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = motorize_the_masses
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = rebuild_the_great_army }
+		x = -2
+		y = 1
+		relative_position_id = rebuild_the_great_army
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_equipment
+				bonus = 1.0
+				uses = 1
+				category = motorized_equipment
+			}
+		}
+	}
+		focus = {
+		id = stolen_artilery_bluprints
+		icon = GFX_goal_generic_army_artillery
+		prerequisite = { focus = rebuild_the_great_army }
+		x = 2
+		y = 1
+		relative_position_id = rebuild_the_great_army
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = artillery
+				bonus = 5.0
+				uses = 1
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		id = support_equipment
+		icon = GFX_focus_generic_commonwealth_build_infantry
+		prerequisite = { focus = stolen_artilery_bluprints }
+		x = 0
+		y = 2
+		relative_position_id = stolen_artilery_bluprints
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = support_tech
+				bonus = 1.5
+				uses = 2
+				category = support_tech
+			}
+		}
+	}
+	focus = {
+		id = new_doctrine_effort
+		icon = GFX_focus_generic_military_mission
+		prerequisite = { focus = support_equipment }
+		prerequisite = { focus = more_doctrine_tactics }
+		x = -1
+		y = 1
+		relative_position_id = support_equipment
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 5
+			add_doctrine_cost_reduction = {
+				name = land_doc_bonus
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = tank_development
+		icon = GFX_focus_generic_tank_production
+		prerequisite = { focus = motorize_the_masses }
+		x = 0
+		y = 2
+		relative_position_id = motorize_the_masses
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				name = armor
+				cost_reduction = 1.0
+				uses = 2
+				category = armor
+			}
+		}
+	}
+	focus = {
+		id = new_generals
+		icon = GFX_focus_generic_military_academy
+		prerequisite = { focus = tank_development }
+		prerequisite = { focus = more_doctrine_tactics }
+		x = 1
+		y = 1
+		relative_position_id = tank_development
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = hungarian_general_staff
+			add_doctrine_cost_reduction = {
+				name = armor
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = air_effort
+		icon = GFX_goal_generic_air_production
+		x = 10
+		y = 0
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = hungarian_air_force 
+			add_doctrine_cost_reduction = {
+				name = air
+				cost_reduction = 0.5
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+	focus = {
+		id = fighter_escorts
+		icon = GFX_goal_generic_air_fighter2
+		prerequisite = { focus = air_effort }
+		x = 2
+		y = 1
+		relative_position_id = air_effort
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = light_fighter
+				bonus = 1.5
+				uses = 1
+				category = light_fighter
+			}
+		}
+	}
+	focus = {
+		id = airport_construction
+		icon = GFX_goal_generic_air_fighter2
+		prerequisite = { focus = air_effort }
+		x =-2
+		y = 1
+		relative_position_id = air_effort
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			every_state = {
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = cas_research
+		icon = GFX_goal_generic_CAS
+		prerequisite = { focus = air_effort }
+		x = 0
+		y = 1
+		relative_position_id = air_effort
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = cas_bomber
+				bonus = 1.0
+				uses = 1
+				category = cas_bomber
+			}
+		}
+	}
+	focus = {
+		id = hungarian_air_force
+		icon = GFX_hungarian_air_force_icon
+		prerequisite = { focus = cas_research }
+		prerequisite = { focus = airport_construction }
+		mutually_exclusive = { focus = fighter_purchaces }
+		x = 0
+		y = 1
+		relative_position_id = cas_research
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = hungarian_air_force_1   
+			remove_ideas = hungarian_air_force 
+		}
+	}
+	focus = {
+		id = fighter_purchaces
+		icon = GFX_focus_generic_aircraft_production
+		prerequisite = { focus = fighter_escorts }
+		x = 0
+		y = 1
+		relative_position_id = fighter_escorts
+		mutually_exclusive = { focus = hungarian_air_force }
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+			
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 100
+				producer = GER
+			}
+			add_equipment_to_stockpile = {
+				type = fighter_equipment
+				amount = 100
+				producer = SOV
+			}
+		}
+	}
+	focus = {
+		id = strategic_air_force
+		icon = GFX_goal_generic_air_bomber
+		prerequisite = { focus = fighter_purchaces }
+		x = 2
+		y = 1
+		relative_position_id = fighter_purchaces
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+			
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = cat_strategic_bomber
+				bonus = 1.0
+				uses = 1
+				category = cat_strategic_bomber
+			}
+		}
+	}
+	focus = {
+		id = advanced_pilots
+		icon = GFX_focus_eng_chiefs_of_staff_committee
+		prerequisite = { focus = fighter_purchaces }
+		x = 0
+		y = 1
+		relative_position_id = fighter_purchaces
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = hungarian_air_force_1
+			remove_ideas = hungarian_air_force 
+		}
+	}
+	focus = {
+		id = aircraft_production
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = hungarian_air_force }
+		x = 0
+		y = 1
+		relative_position_id = hungarian_air_force
+		cost = 7
+
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = three_year_plan
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 23
+		y = 0
+		cost = 10
+
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+		
+			add_ideas = three_year_plan
+		
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = industrial_buildup
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = three_year_plan }
+		relative_position_id = three_year_plan
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			
+			add_tech_bonus = {
+				name = industry
+				bonus = 0.5
+				uses = 2
+				category = industry
+			}
+			
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = budapest_university
+		icon = GFX_focus_research2
+		x = 2
+		y = 1
+		cost = 10
+		prerequisite = { focus = industrial_buildup }
+		relative_position_id = industrial_buildup
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+	focus = {
+		id = centeral_hungarian_construction
+		icon = GFX_focus_generic_industry_2
+		x = 0
+		y = 1
+		cost = 10
+		prerequisite = { focus = industrial_buildup }
+		relative_position_id = industrial_buildup
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = renevate_old_civilian_factories
+		icon = GFX_focus_generic_industry_1
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = centeral_hungarian_construction }
+		prerequisite = { focus = budapest_university }
+		prerequisite = { focus = eastern_supply }
+		relative_position_id = centeral_hungarian_construction
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		mutually_exclusive = { focus = renevate_old_military_factories }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = renevate_old_military_factories
+		icon = GFX_goal_generic_construction2
+		x = 1
+		y = 1
+		cost = 10
+		prerequisite = { focus = centeral_hungarian_construction }
+		prerequisite = { focus = budapest_university }
+		prerequisite = { focus = eastern_supply }
+		relative_position_id = centeral_hungarian_construction
+		search_filters = { FOCUS_FILTER_INDUSTRY }
+		mutually_exclusive = { focus = renevate_old_civilian_factories }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}	
+	focus = {
+		id = military_construction
+		icon = GFX_goal_generic_construct_mil_factory
+		x = -5
+		y = 1
+		cost = 10
+		available = {
+			has_war_support > 0.1
+		}
+		prerequisite = { focus = three_year_plan }
+		relative_position_id = three_year_plan
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}	
+	focus = {
+		id = tank_plant
+		icon = GFX_focus_generic_army_tanks2
+		x = 1
+		y = 1
+		cost = 10
+		available = {
+			has_war_support > 0.1
+		}
+		prerequisite = { focus = military_construction }
+		relative_position_id = military_construction
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor
+				bonus = 1.5
+				uses = 2
+				category = armor
+			}
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = electronic_development
+		icon = GFX_goal_generic_radar
+		x = -1
+		y = 1
+		cost = 10
+		available = {
+			
+		}
+		prerequisite = { focus = military_construction }
+		relative_position_id = military_construction
+		search_filters = {  FOCUS_FILTER_RESEARCH }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = electronics
+				bonus = 3.0
+				uses = 1
+				category = electronics
+			}
+		}
+	}
+	focus = {
+		id = new_political_effort
+		icon = GFX_goal_generic_intelligence_exchange
+		x = 45
+		y = 0
+		cost = 5
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		available = {
+			
+		}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 120
+		}
+	}
+	focus = {
+		id = invite_the_archduke
+		icon = GFX_focus_POL_consolidate_sanation_government
+		x = -6
+		y = 1
+		cost = 10
+		available = {
+			
+		}
+		prerequisite = { focus = new_political_effort }
+		relative_position_id = new_political_effort
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = HUN_hungarian_monarchy
+			set_party_name = { ideology = neutrality long_name = HUN_legitimists_party_long name = HUN_legitimists_party }
+		}
+	}
+	focus = {
+		id = boost_military_wages
+		icon = GFX_focus_POL_belarus_army
+		x = -3
+		y = 1
+		cost = 10
+		available = {
+			
+		}
+		prerequisite = { focus = new_political_effort }
+		relative_position_id = new_political_effort
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = boosted_wages
+		}
+	}
+	focus = {
+		id = strengthen_monarchists
+		icon = GFX_focus_BUL_bulgarian_administration_of_the_balkans
+		x = -2
+		y = 1
+		cost = 10
+		available = {
+			
+		}
+		prerequisite = { focus = invite_the_archduke }
+		relative_position_id = invite_the_archduke
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = {
+				remove_idea = HUN_hungarian_monarchy
+				add_idea = HUN_hungarian_monarchy_2
+			}
+		}
+	}
+	focus = {
+		id = HUN_march_to_the_shore
+		icon = GFX_focus_generic_strike_at_democracy3
+		prerequisite = { focus = HUN_proclaim_the_restoration_of_austria_hungary }
+		x = 1
+		y = 1
+		relative_position_id = HUN_proclaim_the_restoration_of_austria_hungary
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 60
+		}
+
+		available = {
+			has_army_manpower = { size > 250000 }
+			109 = { OWNER = { NOT = { is_in_faction_with = HUN } } }
+			is_subject = no
+		}
+
+		bypass = {
+			controls_state = 102
+			controls_state = 103
+			controls_state = 109
+			controls_state = 104
+			controls_state = 45
+			controls_state = 163
+			controls_state = 764
+			controls_state = 804
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			add_state_claim = 102
+			add_state_claim = 103
+			add_state_claim = 109
+			add_state_claim = 104
+			add_state_claim = 163
+			add_state_claim = 804
+			add_state_core = 764
+			add_state_core = 45
+			if = {
+				limit = {
+					OR = {
+						103 = { is_controlled_by = YUG }
+						103 = { controller = { is_subject_of = YUG } }
+						103 = { controller = { is_in_faction_with = YUG } }
+					}
+				}
+				add_ai_strategy = {
+					type = conquer
+  					id = YUG
+  					value = 200
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = HUN_claim_transylvania
+		icon = GFX_focus_generic_strike_at_democracy2
+		prerequisite = { focus = HUN_proclaim_the_restoration_of_austria_hungary }
+		x = -1
+		y = 1
+		relative_position_id = HUN_proclaim_the_restoration_of_austria_hungary
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 60
+		}
+
+		available = {
+			has_army_manpower = { size > 200000 }
+			76 = { OWNER = { NOT = { is_in_faction_with = HUN } } }
+			is_subject = no
+		}
+
+		bypass = {
+			controls_state = 76
+			controls_state = 83
+			controls_state = 84
+			controls_state = 82
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			add_state_claim = 76
+			add_state_claim = 83
+			add_state_claim = 84
+			add_state_claim = 82
+			if = {
+				limit = {
+					NOT = {
+						has_war_with = ROM
+					}
+					threat < 0.5
+					ROM = {
+						OR = {
+							owns_state = 76
+							owns_state = 83
+							owns_state = 84
+							owns_state = 82
+						}
+					}
+				}
+				ROM = { country_event = DOD_hungary.50 }
+			}
+			else = {
+				add_ai_strategy = {
+					type = conquer
+  					id = ROM
+  					value = 200
+				}
+			}	
+		}
+	}
+
+	focus = {
+		id = serbian_contact
+		icon = GFX_focus_LAT_renew_kviesis_term
+		x = 2
+		y = 1
+		cost = 3
+		available = {
+			
+		}
+		prerequisite = { focus = invite_the_archduke }
+		relative_position_id = invite_the_archduke
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 25
+		}
+	}
+	focus = {
+		id = HUN_demand_a_referendum
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = HUN_invite_the_habsburg_prince }
+		mutually_exclusive = { focus = HUN_take_austria_by_force }
+		x = -1
+		y = 1
+		relative_position_id = HUN_invite_the_habsburg_prince
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 70
+		}
+
+		available = {
+			NOT = { has_war_with = AUS }
+			is_subject = no
+			AUS = {
+				OR = {
+					exists = yes
+					is_subject = no
+				}
+			}
+		}
+
+		bypass = {
+			OR = {
+				AND = {
+					owns_state = 4
+					owns_state = 153
+					owns_state = 152
+				}
+				has_global_flag = GER_reformed_austro_hungarian_empire
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		completion_reward = {
+			AUS = { country_event = { id = DOD_hungary.1 } }
+		}
+	}
+
+	focus = {
+		id = HUN_take_austria_by_force
+		icon = GFX_goal_generic_territory_or_war
+		prerequisite = { focus = HUN_invite_the_habsburg_prince }
+		mutually_exclusive = { focus = HUN_demand_a_referendum }
+		x = 1
+		y = 1
+		relative_position_id = HUN_invite_the_habsburg_prince
+		will_lead_to_war_with = AUS
+		will_lead_to_war_with = GER #if after Anschluss
+		cost = 10
+
+		ai_will_do = {
+			factor = 70
+			modifier = {
+				factor = 0.5
+				AUS = { is_in_faction = yes }
+			}
+		}
+
+		available = {
+			4 = {
+				OWNER = {
+					controls_state = PREV
+				}
+			}
+			is_subject = no
+		}
+
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_ANNEXATION }
+		completion_reward = {
+			random_country = {
+				limit = {
+					owns_state = 4
+				}
+				HUN = {
+					create_wargoal = {
+						type = take_state_focus
+						target = PREV
+						expire = 0
+						generator = { 4 152 153 }
+					}
+				}
+			}
+			add_state_claim = 152
+			add_state_claim = 153
+			add_state_claim = 4
+		}
+	}
+
+	focus = {
+		id = HUN_invite_the_habsburg_prince
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = serbian_contact }
+		prerequisite = { focus = strengthen_monarchists }
+		prerequisite = { focus = invite_the_archduke }
+		#mutually_exclusive = { focus =  invite_the_archduke }
+		x = 0
+		y = 2
+		relative_position_id = invite_the_archduke
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 60
+		}
+
+		available = {
+			has_government = neutrality
+		}
+
+		bypass = {
+			has_global_flag = GER_reformed_austro_hungarian_empire
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = yes
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		completion_reward = {
+			add_naval_commander_role = {
+				character = HUN_miklos_horthy
+				traits = { gunnery_expert navy_media_personality superior_tactician }
+				skill = 3
+				legacy_id = 556 #Navy Miklos
+				attack_skill = 2
+				defense_skill = 2
+				maneuvering_skill = 2
+				coordination_skill = 4				
+			}
+			promote_character = HUN_otto_von_habsburg
+			swap_ideas = {
+				add_idea = HUN_habsburg_restored
+				remove_idea = HUN_hungarian_monarchy_2
+			}
+			set_rule = { can_create_factions = yes }
+			hidden_effect = {
+				news_event = { id = news.290 }
+			}
+		}
+	}
+	focus = {
+		id = HUN_proclaim_the_restoration_of_austria_hungary
+		icon = GFX_focus_proclaim_the_restauration_of_Austria_Hungary
+		prerequisite = { focus = HUN_demand_a_referendum focus = HUN_take_austria_by_force }
+		x = 0
+		y = 2
+		relative_position_id = HUN_invite_the_habsburg_prince
+
+		cost = 10
+
+		ai_will_do = {
+			factor = 60
+		}
+
+		available = {
+			controls_state = 152
+			controls_state = 153
+			controls_state = 4
+			is_subject = no
+		}
+
+		bypass = {
+			has_global_flag = GER_reformed_austro_hungarian_empire
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+
+		search_filters = { FOCUS_FILTER_ANNEXATION FOCUS_FILTER_MANPOWER }
+		completion_reward = {
+			set_cosmetic_tag = HUN_EMPIRE
+			hidden_effect = { AUS = { set_cosmetic_tag = AUS_NOT_WHITE } }
+			152 = { add_core_of = ROOT }
+			153 = { add_core_of = ROOT }
+			4 = { add_core_of = ROOT }
+			69 = { add_core_of = ROOT }
+			9 = { add_core_of = ROOT }
+			75 = { add_core_of = ROOT }
+			74 = { add_core_of = ROOT }
+			72 = { add_core_of = ROOT }
+			70 = { add_core_of = ROOT }
+			664 = { add_core_of = ROOT }
+			71 = { add_core_of = ROOT }
+			73 = { add_core_of = ROOT }
+			hidden_effect = {
+				news_event = { id = news.295 }
+			}
+			set_global_flag = form_austria_hungary_flag
+			set_global_flag = GER_reformed_austro_hungarian_empire
+			
+		}
+	}
+	focus = {
+		id = tank_coordination
+		icon = GFX_goal_generic_army_tanks
+		x = -1
+		y = 1
+		cost = 10
+		prerequisite = { focus = electronic_development }
+		prerequisite = { focus = tank_plant }
+		relative_position_id = tank_plant
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = radar_tech
+				bonus = 1.0
+				uses = 1
+				category = radar_tech
+			}
+		}
+	}
+	focus = {
+		id = synthetic_rubber
+		icon = GFX_goal_generic_oil_refinery
+		x = 5
+		y = 1
+		cost = 10
+		prerequisite = { focus = three_year_plan }
+		relative_position_id = three_year_plan
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	focus = {
+		id = eastern_supply
+		icon = GFX_goal_generic_position_armies
+		x = -2
+		y = 1
+		cost = 10
+		prerequisite = { focus = industrial_buildup }
+		relative_position_id = industrial_buildup
+		search_filters = {  FOCUS_FILTER_INDUSTRY }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_building_construction = {
+				type = supply_node
+				level = 1
+				province = 3683
+				instant_build = yes
+				}
+			}
+		}
+	}
+
+}

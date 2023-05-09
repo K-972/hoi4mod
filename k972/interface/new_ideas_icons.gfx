@@ -1,0 +1,14 @@
+spriteTypes = {	
+	SpriteType = {
+		name = "GFX_idea_hungarian_air_force"
+		texturefile = "gfx/interface/ideas/hungarian_air_force.dds"	
+	}
+	SpriteType = {
+		name = "GFX_idea_hungarian_general_staff"
+		texturefile = "gfx/interface/ideas/hungarian_general_staff.dds"	
+	}
+	SpriteType = {
+		name = "GFX_idea_focus_SOV_merge_plants"
+		texturefile = "gfx/interface/ideas/focus_SOV_merge_plants.dds"	
+	}	
+}
